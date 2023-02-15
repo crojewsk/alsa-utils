@@ -76,7 +76,7 @@ int container_recursive_write(struct container_context *cntr, void *buf,
 	ssize_t result;
 	size_t consumed = 0;
 
-	while (consumed < byte_count && !cntr->interrupted) {
+	while (consumed < byte_count /*&& !cntr->interrupted*/) {
 		result = write(cntr->fd, src + consumed, byte_count - consumed);
 		if (result < 0) {
 			// This descriptor was configured with non-blocking
